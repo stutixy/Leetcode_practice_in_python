@@ -1,0 +1,14 @@
+class Solution:
+    def minOperations(self, nums: List[int]) -> int:
+        length = len(nums)
+        target = length-1
+        nums = sorted(set(nums))
+        l = 0
+        longest = 0
+        print(nums)
+        for r in range(len(nums)):
+            while l < r and nums[r] - nums[l] > target:
+                l += 1
+            longest = max(longest, r-l+1)
+        
+        return length-longest 
